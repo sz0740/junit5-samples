@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2018 the original author or authors.
+ * Copyright 2015-2021 the original author or authors.
  *
  * All rights reserved. This program and the accompanying materials are
  * made available under the terms of the Eclipse Public License v2.0 which
@@ -39,18 +39,20 @@ class Builder {
 
 		// jupiter-starter
 		// TODO run("junit5-jupiter-starter-ant", "antw"); https://github.com/junit-team/junit5-samples/issues/66
-		run("junit5-jupiter-starter-gradle", "gradlew", "clean", "test");
-		run("junit5-jupiter-starter-gradle-groovy", "gradlew", "clean", "test");
-		run("junit5-jupiter-starter-gradle-kotlin", "gradlew", "clean", "test");
-		run("junit5-jupiter-starter-maven", "mvnw", "clean", "test");
+		run("junit5-jupiter-starter-gradle", "gradlew", "test");
+		run("junit5-jupiter-starter-gradle-groovy", "gradlew", "test");
+		run("junit5-jupiter-starter-gradle-kotlin", "gradlew", "test");
+		run("junit5-jupiter-starter-maven", "mvnw", "--batch-mode", "clean", "test");
+		run("junit5-jupiter-starter-maven-kotlin", "mvnw", "--batch-mode", "clean", "test");
+		run("junit5-jupiter-starter-bazel", "bazelisk.py", "test", "//...", "--test_output", "all");
 
 		// jupiter-extensions
-		run("junit5-jupiter-extensions", "gradlew", "clean", "test");
+		run("junit5-jupiter-extensions", "gradlew", "test");
 
 		// migration
-		run("junit5-migration-gradle", "gradlew", "clean", "test");
-		run("junit5-migration-maven", "mvnw", "clean", "test");
-		run("junit5-multiple-engines", "gradlew", "clean", "test");
+		run("junit5-migration-gradle", "gradlew", "test");
+		run("junit5-migration-maven", "mvnw", "--batch-mode", "clean", "test");
+		run("junit5-multiple-engines", "gradlew", "test");
 
 		// modular
 		run("junit5-modular-world", "jshell", "build.jsh");
@@ -101,6 +103,7 @@ class Builder {
 			var errors = 0;
 			var paths = Files.walk(Paths.get("."))
 					.filter(path -> path.getFileName().toString().endsWith(extension))
+					.filter(path -> !path.getFileName().toString().equals("MavenWrapperDownloader.java"))
 					.collect(Collectors.toList());
 			for (var path : paths) {
 				if (checkLicense(path, expected)) {

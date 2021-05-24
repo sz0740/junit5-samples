@@ -10,11 +10,11 @@ using the JUnit Platform with various [TestEngine][guide-custom-engine] implemen
  
 ## 3rd-party test engines 
  
- * [Brahms Maingine](https://github.com/sormuras/brahms)
- * [Brahms Single-File Source-Code Engine (JEP 330)](https://github.com/sormuras/brahms)
  * [JQwik Test Engine](http://jqwik.net)
  * [KotlinTest](https://github.com/kotlintest/kotlintest)
- * [Spek](https://github.com/spekframework/spek)
+ * [MAINRUNNER](https://github.com/sormuras/mainrunner)
+ * [Spek](https://spekframework.org)
+ * [TestNG](https://github.com/testng-team/testng-junit5)
 
 ## More engines
 

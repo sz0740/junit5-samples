@@ -1,5 +1,7 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
-	kotlin("jvm") version "1.2.41"
+	kotlin("jvm") version "1.4.30"
 }
 
 repositories {
@@ -7,18 +9,18 @@ repositories {
 }
 
 dependencies {
-	testCompile("org.junit.jupiter:junit-jupiter-api:5.3.1")
-	testCompile("org.junit.jupiter:junit-jupiter-params:5.3.1")
-	testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.1")
+	testImplementation(platform("org.junit:junit-bom:5.7.2"))
+	testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
-tasks.withType<Test> {
+tasks.test {
 	useJUnitPlatform()
 	testLogging {
 		events("passed", "skipped", "failed")
 	}
 }
 
-tasks.withType<Wrapper> {
-	gradleVersion = "4.8"
+// config JVM target to 1.8 for kotlin compilation tasks
+tasks.withType<KotlinCompile>().configureEach {
+	kotlinOptions.jvmTarget = "1.8"
 }

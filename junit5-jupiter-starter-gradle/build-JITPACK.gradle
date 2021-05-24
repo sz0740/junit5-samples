@@ -3,7 +3,7 @@ plugins {
 }
 
 ext.jitpackGroup = 'com.github.junit-team.junit5'
-ext.jitpackVersion = 'master-SNAPSHOT'
+ext.jitpackVersion = 'main-SNAPSHOT'
 // ext.jitpackVersion = 'experiments~parallel-execution-SNAPSHOT'
 
 repositories {
@@ -12,9 +12,8 @@ repositories {
 }
 
 dependencies {
-	testCompile("${jitpackGroup}:junit-jupiter-api:${jitpackVersion}")
-	testCompile("${jitpackGroup}:junit-jupiter-params:${jitpackVersion}")
-	testRuntime("${jitpackGroup}:junit-jupiter-engine:${jitpackVersion}")
+	testImplementation(platform("${jitpackGroup}:junit-bom:${jitpackVersion}"))
+	testImplementation("${jitpackGroup}:junit-jupiter")
 }
 
 test {

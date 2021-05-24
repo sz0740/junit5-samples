@@ -5,22 +5,24 @@
 //
 // download main and test dependencies
 //
-String platformVersion = "1.3.1"
-String jupiterVersion = "5.3.1"
-String vintageVersion = "5.3.1"
+String platformVersion = "1.7.2"
+String jupiterVersion = "5.7.2"
+String vintageVersion = "5.7.2"
 get("lib", "org.junit.platform", "junit-platform-commons", platformVersion)
 get("lib", "org.junit.platform", "junit-platform-console", platformVersion)
 get("lib", "org.junit.platform", "junit-platform-engine", platformVersion)
 get("lib", "org.junit.platform", "junit-platform-launcher", platformVersion)
+get("lib", "org.junit.platform", "junit-platform-reporting", platformVersion)
 get("lib", "org.junit.jupiter", "junit-jupiter-api", jupiterVersion)
 get("lib", "org.junit.jupiter", "junit-jupiter-params", jupiterVersion)
 get("lib", "org.junit.jupiter", "junit-jupiter-engine", jupiterVersion)
 get("lib", "org.junit.vintage", "junit-vintage-engine", vintageVersion)
-get("lib", "junit", "junit", "4.12")
+get("lib", "junit", "junit", "4.13.2")
 get("lib", "org.hamcrest", "hamcrest-core", "1.3")
-get("lib", "org.apiguardian", "apiguardian-api", "1.0.0")
-get("lib", "org.opentest4j", "opentest4j", "1.1.1")
-get("lib", "net.jqwik", "jqwik", "0.8.10")
+get("lib", "org.apiguardian", "apiguardian-api", "1.1.0")
+get("lib", "org.opentest4j", "opentest4j", "1.2.0")
+get("lib", "net.jqwik", "jqwik-api", "1.3.0")
+get("lib", "net.jqwik", "jqwik-engine", "1.3.0")
 
 // create target directories
 Files.createDirectories(Paths.get("bin/main-jars"))
